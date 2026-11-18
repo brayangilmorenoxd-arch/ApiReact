@@ -1,16 +1,17 @@
 import mysql from "mysql2/promise";
 
 const pool = mysql.createPool({
-    host : "localhost",
-    port : 3306,
-    user : "root",
-    password : "",
-    database : "db_usuario",
+    host: process.env.APP_HOST || "localhost",
+    port: Number(process.env.MYSQL_ADDON_PORT) || 3306,
+    user: process.env.MYSQL_ADDON_USER || "root",
+    password: process.env.MYSQL_ADDON_PASSWORD || "",
+    database: process.env.MYSQL_ADDON_DB || "app_usuario",
     waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0,
-    timezone: "Z",
-    dateStrings: true,
-    decimalNumbers: true,
+    connectionLimit: 10,
+    queueLimit: 0,
+    timezone: "Z",
+    dateStrings: true,
+    decimalNumbers: true,
 });
+
 export default pool;
